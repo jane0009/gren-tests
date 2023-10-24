@@ -1,0 +1,17 @@
+module Shimmy.UpdateHandler exposing (..)
+
+import Shimmy.Constants exposing (..)
+
+
+update : Msg -> Model -> UpdateMsg
+update msg model =
+    case msg of
+        SetScreen str ->
+            { model = { model | screen = str }
+            , command = Cmd.none
+            }
+
+        _ ->
+            { model = model
+            , command = Cmd.none
+            }

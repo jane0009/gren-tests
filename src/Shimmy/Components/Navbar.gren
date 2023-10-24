@@ -1,0 +1,11 @@
+module Shimmy.Components.Navbar exposing (..)
+
+import Html exposing (..)
+
+
+navMain : Html msg
+navMain =
+    div
+        []
+        [ text "test"
+        ]

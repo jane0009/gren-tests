@@ -1,6 +1,86 @@
-module Main exposing (main)
+module Main exposing ( main )
 
-import Html
+import Browser
+import Browser.Dom as Dom
+import Html exposing (..)
+import Shimmy.Components.Navbar as Navbar
+import Shimmy.Constants exposing (..)
+import Shimmy.UpdateHandler as Upd
+import Shimmy.Views.Index as Index
+import Task
 
+
+
+-- main
+
+
+main : Program {} Model Msg
 main =
-  Html.text "Hello, world!"
+    Browser.document
+        { init = init
+        , view =
+            \model ->
+                { title = "Shimmy Gren Tests"
+                , body =
+                    [ view model
+                    ]
+                }
+        , update = update
+        , subscriptions = subscriptions
+        }
+
+
+
+-- init
+
+
+init :
+    {}
+    -> { model : Model
+       , command : Cmd Msg
+       }
+init _ =
+    { model = emptyModel
+    , command = Cmd.none
+    }
+
+
+
+-- update
+
+
+update :
+    Msg
+    -> Model
+    -> { model : Model
+       , command : Cmd Msg
+       }
+update msg model =
+    case msg of
+        SetScreen str ->
+            { model = { model | screen = str }
+            , command = Cmd.none
+            }
+
+        _ ->
+            { model = model
+            , command = Cmd.none
+            }
+
+
+
+-- view
+
+
+view : Model -> Html Msg
+view model =
+    Index.indexView model
+
+
+
+-- subscriptions
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none

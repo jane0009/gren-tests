@@ -1,0 +1,24 @@
+module Shimmy.Constants exposing (..)
+
+
+
+type alias Model =
+    { screen : String
+    }
+
+
+emptyModel : Model
+emptyModel =
+    { screen = "home"
+    }
+
+
+type Msg
+    = NoOp
+    | SetScreen String
+
+
+type alias UpdateMsg =
+    { model : Model
+    , command : Cmd Msg
+    }

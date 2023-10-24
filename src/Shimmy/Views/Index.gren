@@ -1,0 +1,12 @@
+module Shimmy.Views.Index exposing (..)
+
+import Html exposing (..)
+import Shimmy.Constants exposing (..)
+
+
+indexView : Model -> Html msg
+indexView model =
+    div
+        []
+        [ text "Html Test Work"
+        ]
