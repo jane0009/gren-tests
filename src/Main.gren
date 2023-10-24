@@ -18,13 +18,7 @@ main : Program {} Model Msg
 main =
     Browser.document
         { init = init
-        , view =
-            \model ->
-                { title = "Shimmy Gren Tests"
-                , body =
-                    [ view model
-                    ]
-                }
+        , view = Index.indexView
         , update = update
         , subscriptions = subscriptions
         }
@@ -56,26 +50,7 @@ update :
        , command : Cmd Msg
        }
 update msg model =
-    case msg of
-        SetScreen str ->
-            { model = { model | screen = str }
-            , command = Cmd.none
-            }
-
-        _ ->
-            { model = model
-            , command = Cmd.none
-            }
-
-
-
--- view
-
-
-view : Model -> Html Msg
-view model =
-    Index.indexView model
-
+    Upd.update msg model
 
 
 -- subscriptions

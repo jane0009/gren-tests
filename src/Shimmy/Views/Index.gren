@@ -1,12 +1,34 @@
 module Shimmy.Views.Index exposing (..)
 
+import Browser exposing (..)
 import Html exposing (..)
 import Shimmy.Constants exposing (..)
+import Shimmy.Views.Content exposing (..)
 
-
-indexView : Model -> Html msg
+indexView : Model -> Document Msg
 indexView model =
+    getContent model
+    |> parseContent model
+-- \model ->
+--                { title = "Shimmy Gren Tests"
+--                , body =
+--                    [ view model
+--                   ]
+--                }
+
+parseContent : Model -> Content -> Document Msg
+parseContent model content =
+    { title = content.title
+    , body = [ indexWrap model content.body ]
+    }
+
+indexWrap : Model -> Html Msg -> Html Msg
+indexWrap model children =
     div
         []
         [ text "Html Test Work"
+        , div 
+            []
+            [ children
+            ]
         ]

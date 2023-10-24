@@ -1,0 +1,24 @@
+module Shimmy.Views.Content exposing (..)
+
+import Browser exposing (Document)
+import Html exposing (..)
+
+import Shimmy.Constants exposing (..)
+
+getContent : Model -> Content
+getContent model =
+    {
+        title = getTitle model,
+        body = getBody model
+    }
+
+getTitle : Model -> String
+getTitle _ =
+    "Shimmy Gren Tests"
+
+getBody : Model -> Html Msg
+getBody model =
+    div
+        []
+        [ text "Shimmy Content"
+        ]
